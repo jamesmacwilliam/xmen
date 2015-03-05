@@ -1,0 +1,28 @@
+%table
+  %thead
+    %tr
+      %th Team
+  %tbody
+    %tr
+      %td
+        %a.button.round.tiny{ ng: { if: '!mCtrl.new_team',
+        click: 'mCtrl.new_team = true; mCtrl.team = {}' } } +
+
+        %todo-form{ model: "mCtrl.team",
+          show: 'mCtrl.new_team',
+          submit: 'mCtrl.saveTeam' }
+
+    %tr{ ng: { repeat: "team in mCtrl.teams" } }
+      %td
+        %todo-form{ model: 'team',
+          show: 'mCtrl.teamFormVisible(team)',
+          submit: 'mCtrl.saveTeam' }
+
+        .div.clickable{ ng: { click: "mCtrl.showTeamForm(team)",
+        show:  '!mCtrl.teamFormVisible(team)',
+        class: "mCtrl.teamClass(team)",
+        'attr-popover' => '{{ team.desc }}' },
+        'popover-delay' => '250',
+        'popover-animation' => 'true',
+        'popover-trigger' => 'mouseenter' }
+          {{ team.name }}

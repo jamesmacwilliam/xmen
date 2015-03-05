@@ -1,0 +1,16 @@
+!!!
+%html{'ng-app' => 'todo.main' }
+  %head
+    %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport" }/
+    %title= yield?(:title, I18n.t("page.title"))
+    %meta{ content: yield?(:description, I18n.t("meta.desc")),
+    name: I18n.t("meta.name") }/
+    = stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track" => true
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %main{ role: "main" }
+      = yield

@@ -1,0 +1,14 @@
+@import "framework_and_overrides";
+
+.active {
+  font-weight: bold;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.clickable:hover {
+  cursor:pointer;
+  opacity: 0.5;
+}
